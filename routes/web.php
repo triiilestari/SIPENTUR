@@ -54,6 +54,8 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::resource('admin', 'MasyarakatController');
         Route::get('bayar/{id}', 'SewaController@bayar');
         Route::post('bayar', 'SewaController@post_bayar');
+
+        Route::get('checkout', 'SewaController@indexcheckout');
     });
     
     

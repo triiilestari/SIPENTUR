@@ -45,12 +45,12 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <b id="start_date">{{ date('d-m-Y', strtotime($item->day_start)) }}</b>
+                                    <b id="start_date">{{ date('d M Y', strtotime($item->day_start)) }}</b>
                                 </div>
                             </td>
                             <td class="mulai">
                                 <div class="cart_quantity_button">
-                                    <b id="end_date">{{ date('d-m-Y', strtotime($item->day_over)) }}</b>
+                                    <b id="end_date">{{ date('d M Y', strtotime($item->day_over)) }}</b>
                                 </div>
                                 {{--                                    {{ ($item->day_start) - ($item->day_over)  }}--}}
                             </td>

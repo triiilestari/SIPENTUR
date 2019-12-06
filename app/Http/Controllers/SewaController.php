@@ -130,4 +130,15 @@ class SewaController extends Controller
         
         return redirect('/');
     }
+
+    public function indexcheckout()
+    {
+        //
+        $checkout = DB::table('payments')
+        ->join('rentals', 'rentals.id','=','payments.id_rental')
+        ->join('buildings', 'buildings.id','=','rentals.id_building')
+        ->get();
+
+        return view('user/checkout', compact('checkout'));
+    }
 }

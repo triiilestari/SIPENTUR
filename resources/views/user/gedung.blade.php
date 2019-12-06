@@ -33,9 +33,9 @@
 									{{-- <i>(Cek ketersediaan dulu sebelum menyewa)</i> --}}
 
 								</span>
-                                <p><b>Alamat:</b> {{ $detailGedung->address_building }}</p>
+                                <p><b>Alamat    :</b> {{ $detailGedung->address_building }}</p>
                                 <p><b>Kapasitas :</b> {{ $detailGedung->capacity }} orang</p>
-                                <p><b>Pemilik : </b>{{ $detailGedung->user->name}} </p>
+                                <p><b>Pemilik   : </b>{{ $detailGedung->user->name}} </p>
                                 <a href=""><img src="images/product-details/share.png" class="share img-responsive"
                                                 alt=""/></a>
                                 <table>
@@ -118,13 +118,13 @@
                                             <li><a href=""><i class="fa fa-star"></i>PODIUM</a></li>
                                         @endif
                                     </ul>
-                                    <h2>Ulasan gedung</h2>
-                                    <p>{{ $detailGedung->description }}</p>
                                     <h2>Kriteria</h2>
                                     @if ($detailGedung->ac + $detailGedung->podium + $detailGedung->toilet + $detailGedung->proyektor + $detailGedung->rganti +
                                     $detailGedung->parking <= 4) Standart @elseif($detailGedung->ac + $detailGedung->podium + $detailGedung->toilet + $detailGedung->proyektor
                                       + $detailGedung->rganti + $detailGedung->parking <= 5) VIP @else VVIP @endif
                                     {{-- <p>{{ $detailGedung->description }}</p> --}}
+                                    <h2>Ulasan gedung</h2>
+                                    <p>{{ $detailGedung->description }}</p>
                                 </div>
                             </div>
                         </div>

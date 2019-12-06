@@ -120,11 +120,11 @@
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 {{-- @include('user.layout.navbar') --}}
                                 @guest
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                <li><a href="{{ url('/checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="{{ url('/sewa') }}"><i class="fa fa-shopping-cart"></i> Sewa</a></li> 
                                 @else
                                 @if (Auth::user()->id_role == 3)
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                <li><a href="{{ url('/checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="{{ url('/sewa') }}"><i class="fa fa-shopping-cart"></i> Sewa</a></li>
                                 @endif
                                 @if (Auth::user()->id_role == 2)
