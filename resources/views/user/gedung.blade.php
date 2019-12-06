@@ -29,7 +29,7 @@
                                 <h2>{{ $detailGedung->name_building }}</h2>
                                 {{-- <img src="images/product-details/rating.png" alt=""/> --}}
                                 <span>
-									<span>Rp.{{$detailGedung->cost}}</span>
+									<span>Rp {{ number_format(floatval($detailGedung->cost))}}</span>
 									{{-- <i>(Cek ketersediaan dulu sebelum menyewa)</i> --}}
 
 								</span>

@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
     Route::get('/','PenyewaController@index');
     Route::get('gedung/{id}','PenyewaController@DetailGedung');
     
-    Route::get('/sewa', 'PenyewaController@sewa');
+    // Route::get('/sewa', 'PenyewaController@sewa');
     Route::get('/sewa/{id}/hapus', 'SewaController@destroy');
     
     Route::group(['middleware' => ['auth','owner']], function () {
@@ -35,6 +35,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::post('/buildings/create', 'GedungController@store')->name('owner.creategedung');
         Route::get('/buildings/{gedung}', 'GedungController@edit')->name('owner.proposeedit');
         Route::patch('/buildings/update/{gedung}', 'GedungController@update')->name('owner.editgedung');
+        
         
     });
     
@@ -54,8 +55,8 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::resource('admin', 'MasyarakatController');
         Route::get('bayar/{id}', 'SewaController@bayar');
         Route::post('bayar', 'SewaController@post_bayar');
-
         Route::get('checkout', 'SewaController@indexcheckout');
+        Route::get('/sewa', 'PenyewaController@sewa');
     });
     
     
