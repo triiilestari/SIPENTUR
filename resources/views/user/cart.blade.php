@@ -22,7 +22,7 @@
                 <thead>
                     <tr class="cart_menu">
                         <td class="image">Gedung</td>
-                        <td class="description"></td>
+                        <td class="description">Nama Gedung</td>
                         <td class="price">Harga</td>
                         <td class="start">Mulai</td>
                         <td class="selesai">selesai</td>
@@ -35,13 +35,13 @@
                     <article data-postid="{{ $item->id }}">
                         <tr>
                             <td class="cart_product">
-                                <a href=""><img src="{{ asset('file/'. $item->building->files) }}" alt="" width="100px"></a>
+                                <a href=""><img src="{{ asset('file/'. $item->files) }}" alt="" width="100px"></a>
                             </td>
                             <td class="cart_description">
-                                <h4><a href="">{{ $item->building->name_building }}</a></h4>
+                                <h4><a href="">{{ $item->name_building }}</a></h4>
                             </td>
                             <td class="cart_price">
-                                <p>Rp {{ number_format(floatval($item->building->cost)) }}</p>
+                                <p>Rp {{ number_format(floatval($item->cost)) }}</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -52,8 +52,6 @@
                                 <div class="cart_quantity_button">
                                     <b id="end_date">{{ date('d M Y', strtotime($item->day_over)) }}</b>
                                 </div>
-                                {{--                                    {{ ($item->day_start) - ($item->day_over)  }}--}}
-                            </td>
                             <td class="cart_total">
                                 <p class="cart_total_price" id="sumprice"></p>
                             </td>
@@ -75,7 +73,7 @@
                                 <table class="table table-condensed total-result">
                                     <tr>
                                         <td>Total</td>
-                                        <td><span>Rp {{ number_format(floatval($item->building->cost * ($selisih->days + 1)))}}</span></td>
+                                        {{-- <td><span>Rp {{ number_format(floatval($item->building->cost * ($selisih->days + 1)))}}</span></td> --}}
                                     </tr>
                                     <tr>
                                         

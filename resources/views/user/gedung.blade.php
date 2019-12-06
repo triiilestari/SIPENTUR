@@ -47,7 +47,7 @@
                                             <b>Akhir sewa</b>
                                         </td>
                                     </tr>
-                                    <form action="{{url('/sewagedung')}}" method="POST">
+                                    <form action="{{url('/sewa')}}" method="POST">
                                         @csrf
                                         <input type="text" name="id" value="{{$detailGedung->id}}" style="display: none">
                                         <tr>

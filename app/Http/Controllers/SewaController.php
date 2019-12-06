@@ -54,8 +54,7 @@ class SewaController extends Controller
         $sewa = \App\Rental::all()->where('id_loaner','=',$id);
 
 
-        return view('user.cart')
-            ->with('sewa', $sewa);
+        return view('user.cart')->with('sewa', $sewa);
     }
 
     /**
