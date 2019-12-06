@@ -77,6 +77,7 @@
                     <div class="row">
                         <div class="col-sm-12 padding-right">
                             <div class="features_items"><!--features_items-->
+                                <br>
                                 <h2 class="title text-center">Cari Gedung</h2>
                                 
                                 @foreach($verif as $gedung)
@@ -85,9 +86,9 @@
                                         <div class="product-image-wrapper" >
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <img src="{{ asset('file/'. $gedung->files) }}" alt=""/>
-                                                    <h2>Rp.{{ number_format($gedung->cost) }} /hari</h2>
-                                                    <p>{{$gedung->name_building}}</p>
+                                                    <img style="width:10cm; height:7cm" src="{{ asset('file/'. $gedung->files) }}" alt=""/>
+                                                    <h2>Rp {{ number_format($gedung->cost) }} /hari</h2>
+                                                    <p><h4>{{$gedung->name_building}}<h4></p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Sewa
                                                     </a>
@@ -95,8 +96,8 @@
                                                 <a href="/gedung/{{ $gedung->id }}">
                                                     <div class="product-overlay">
                                                         <div class="overlay-content">
-                                                            <h2>Rp.{{ $gedung->cost }}</h2>
-                                                            <p>{{$gedung->name_building}}</p>
+                                                            <h2>Rp {{number_format($gedung->cost)}} /hari</h2>
+                                                            <p><h4>{{$gedung->name_building}}</h4></p>
                                                             <a href="/gedung/{{ $gedung->id }}" class="btn btn-default add-to-cart"><i
                                                                 class="fa fa-shopping-cart"></i>Sewa
                                                             </a>
@@ -114,17 +115,17 @@
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
-                                                    <img src="{{ asset('file/'. $gedung->files) }}" alt=""/>
-                                                    <h2>Rp.{{ $gedung->cost }} /hari</h2>
-                                                    <p>{{$gedung->name_building}}</p>
+                                                    <img style="width:10cm; height:7cm" src="{{ asset('file/'. $gedung->files) }}" alt=""/>
+                                                    <h2>Rp {{number_format($gedung->cost) }} /hari</h2>
+                                                    <p><h2>{{$gedung->name_building}}</h2></p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Sewa</a>
                                                     </div>
                                                     <a href="/gedung/{{ $gedung->id }}">
                                                         <div class="product-overlay">
                                                             <div class="overlay-content">
-                                                                <h2>Rp.{{ $gedung->cost }}</h2>
-                                                                <p>{{$gedung->name_building}}</p>
+                                                                <h2>Rp {{ number_format($gedung->cost)}}/hari</h2>
+                                                                <p><h4>{{$gedung->name_building}}<h4></p>
                                                                 <a href="#" class="btn btn-default add-to-cart"><i
                                                                     class="fa fa-shopping-cart"></i>Sewa</a>
                                                                 </div>

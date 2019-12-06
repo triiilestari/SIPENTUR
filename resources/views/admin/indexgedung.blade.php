@@ -17,11 +17,10 @@
             <thead>
                 <tr class="headings">
                     <th scope="row">No.</th>
-
                     <th>Nama Gedung</th>
                     <th>Alamat Gedung</th>
+                    <th>Pemilik<th>
                     <th>Status</th>
-
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -31,6 +30,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $gedung->name_building }}</td>
                     <td>{{ $gedung->address_building }}</td>
+                    <td>{{ $gedung->users->name}}
                     <td>
                         @if ( $gedung->submission==1 && $gedung->verif==0 && $gedung->edit==0)
                         Belum terverifikasi

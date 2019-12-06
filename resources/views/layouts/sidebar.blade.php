@@ -20,8 +20,8 @@
                     <div class="menu_section">
                         <ul class="nav side-menu">
                             @if (Auth::user()->id_role == '1')
-                            <li><a><i class="fa fa-edit"></i> Gedung <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
+                            {{-- <li><a><i class="fa fa-edit"></i> Gedung <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu"> --}}
                                     <li>
                                         <a href="{{ route('admin.indexbuilding')}}" class="nav-link">
                                             <i class="fa fa-table"></i>
@@ -40,8 +40,8 @@
                                             <span>Pengajuan Edit Gedung</span>
                                         </a>
                                     </li> --}}
-                                </ul>
-                            </li>
+                                {{-- </ul>
+                            </li> --}}
 
 
                             <li>

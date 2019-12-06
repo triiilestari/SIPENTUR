@@ -115,7 +115,7 @@
           <th>Harga</th>
           <th>Kapasitas</th>
           <th>Deskripsi</th>
-          {{-- <th>Kriteria</th> --}}
+          <th>Kriteria</th>
           <th>Gambar</th>
           <th>Aksi</th>
         </tr>
