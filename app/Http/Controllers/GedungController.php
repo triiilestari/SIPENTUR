@@ -278,4 +278,14 @@ class GedungController extends Controller
         Gedung::destroy($gedung->id);
         return redirect('owner.indexgedung')->with('status', 'Data Gedung Berhasil di hapus');
     }
+
+    public function pemilik($id)
+    {
+        //
+        $pemilik = User::all()->where('id',$id);
+        return view('admin.pemilik', compact('pemilik'));
+        // ->join('buildings', 'buildings.id_owner','=','users.id')
+        // ->get();
+        // dd($pemilik);
+    }
 }

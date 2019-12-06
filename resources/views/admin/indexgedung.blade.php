@@ -19,7 +19,8 @@
                     <th scope="row">No.</th>
                     <th>Nama Gedung</th>
                     <th>Alamat Gedung</th>
-                    <th>Pemilik<th>
+                    <th>Harga Sewa</th>
+                    <th>Pemilik</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
@@ -30,7 +31,8 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $gedung->name_building }}</td>
                     <td>{{ $gedung->address_building }}</td>
-                    <td>{{ $gedung->users->name}}
+                    <td>{{ $gedung->cost }}</td>
+                <td><a href="{{ url('admin/pemilik',$gedung->user->id)}}" >{{$gedung->user->name}}</td>
                     <td>
                         @if ( $gedung->submission==1 && $gedung->verif==0 && $gedung->edit==0)
                         Belum terverifikasi
@@ -44,8 +46,6 @@
                     </td>
 
                     <td>
-
-
                         @if ( $gedung->submission==1 && $gedung->verif==0 && $gedung->edit==0)
                         <a href="" class="btn btn-info btn-xs" data-toggle="modal"
                             data-target="#verif-{{ $gedung->id }}">
