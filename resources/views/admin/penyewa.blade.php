@@ -5,10 +5,7 @@
 @section('container')
 <div style="text-align: center; font-family: Bookman Old Style; font-size:30px">DATA PENYEWA GEDUNG</div>
 <div class="x_panel">
-    <div class="">
-        <br>
-        <br>
-        <br>
+    <div class="x_content">
         <table id="datatable" class="table table-striped jambo_table bulk-action">
             <thead>
                 <tr class="headings">
@@ -20,6 +17,7 @@
                     <th>Durasi</th>
                     <th>Total</th>
                     <th>Bukti Transfer</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -51,10 +49,86 @@
                     <td>
                         <img src="{{ asset('storage/'. $item->bukti_tf) }}" alt="" width="100px" height="80px">
                     </td>
+                    <td>
+                        @if($item->approvement=='proses')
+                        Menunggu Verifikasi
+                        @endif
+                        @if($item->approvement=='terverifikasi')
+                        Terverifikasi
+                        @endif
+                    </td>
+                    <td>
+                        @if ( $item->approvement=='proses')
+                        <a href="" class="btn btn-info btn-xs" data-toggle="modal"
+                            data-target="#verif-{{ $item->id_rental}}">
+                            <i class="fa fa-folder"></i> Verifikasi</a>
+                        @endif
+                        @if ( $item->approvement=='terverifikasi')
+                        <a href="" class="btn btn-success btn-xs">
+                            <i class="fa fa-folder"></i> Terverifikasi</a>
+                        @endif
+                    </td>
+                    <div class="modal fade" id="verif-{{$item->id}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Verifikasi Pembayaran</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <form action="{{ url('admin/verifbayar',$item->id) }}" method="post">
+                                        <div class="modal-body">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div class="form-group">
+                                                <label for="">Nama Gedung</label>
+                                                <p>{{ $item->name_building }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Alamat Gedung</label>
+                                                <p>{{ $item->address_building }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Harga Gedung</label>
+                                                <p>Rp {{number_format($item->cost)}}</h3>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Pelaksanaan</label>
+                                                <p><b>Mulai</b></p>
+                                                <p>{{ date('d M Y', strtotime($item->day_start)) }}</p>
+                                                <p><b>Selesai</b></p>
+                                                <p>{{ date('d M Y', strtotime($item->day_over)) }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label for="">Durasi</label>
+                                                    <p>{{$selisih->days + 1}} hari</p>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label for="">Total</label>
+                                                    <p>Rp {{number_format($item->salary)}}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <img src="{{ asset('storage/'. $item->bukti_tf) }}" style="width: 200px; height: 200px;"srcset="">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Verifikasi</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                 </tr>
                 @endforeach
+
+                
             </tbody>
         </table>
     </div>
 </div>
+
 @endsection

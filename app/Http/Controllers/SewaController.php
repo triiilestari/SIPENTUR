@@ -140,4 +140,14 @@ class SewaController extends Controller
 
         return view('user/checkout', compact('checkout'));
     }
+
+    public function verifbayar(Payment $penyewa)
+    {
+        $penyewa->update([
+            'aprrovement' => 'Terverifikasi'
+        ]);
+
+        return redirect()->back();
+
+    }
 }

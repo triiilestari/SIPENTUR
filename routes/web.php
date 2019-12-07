@@ -69,6 +69,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::get('/verificationedit', 'GedungController@verificationedit')->name('admin.editverification');
         Route::get('/admin/pemilik/{user}', 'GedungController@pemilik')->name('pemilik.gedung');
         Route::get('/datapenyewa', 'GedungController@penyewa');
+        Route::patch('admin/verifbayar/{payment}', 'SewaController@verifbayar');
         // Route::get('admin.showgedung/{gedung}', 'GedungController@show');
     });
     
