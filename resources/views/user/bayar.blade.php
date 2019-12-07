@@ -57,9 +57,8 @@
                             <form action="{{url('bayar')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$data->id}}">
-                                <input type="text" name="bayar" placeholder="Nominal" required>
-                                <br>
-                                <br>
+                                <label for=""><b>Nominal Pembayaran (Rp)</b></label>
+                                <input type="text" name="bayar" value="{{\DB::table('buildings')->where('id', $data->id_building)->value('cost') * ($selisih->days + 1)}}">
                                 <label for=""><b>Bukti Transafer</b></label>
                                 <input type="file" name="bukti_tf" required>
                                 <a href="{{ url('/sewa') }}" class="btn btn-primary"> Batal </a>

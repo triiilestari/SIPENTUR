@@ -293,11 +293,11 @@ class GedungController extends Controller
     public function penyewa()
     {
         //
-        $penyewa = Payment::all()
+        $penyewa = DB::table('payments')
+        ->join('rentals', 'rentals.id','=','payments.id_rental')
+        ->join('buildings', 'buildings.id','=','rentals.id_building')
         ->get();
-        // return view('admin.penyewa', compact('penyewa'));
-        // ->join('buildings', 'buildings.id_owner','=','users.id')
-        // ->get();
-        dd($penyewa);
+        return view('admin/penyewa', compact('penyewa'));
+        // dd($penyewa);
     }
 }

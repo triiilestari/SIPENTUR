@@ -50,29 +50,11 @@
                                 <span><b id="start_date">{{ date('d M Y', strtotime($item->day_over)) }}</b></span>
 
                             </td>
-                            {{-- <td colspan="5" class="cart_quantity">
-                                    <table class="table table-condensed total-result">
-                                            <tr>
-                                                <td>Mulai</td>
-                                            </tr>
-                                            <tr>
-                                                
-                                                <td><span><b id="start_date">{{ date('d-m-Y', strtotime($item->day_start)) }}</b></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Selesai</td>
-                                            </tr>
-                                            <tr>
-                                                    <td><span><b id="start_date">{{ date('d-m-Y', strtotime($item->day_over)) }}</b></span></td>
-                                            </tr>
-                                            
-                                        </table>
-                         </td> --}}
                             <td>
                                 <p>{{ date('d M Y', strtotime($item->day_payment)) }}</p>
                             </td>
                             <td>
-                                <img src="{{ asset('storage/'. $item->bukti_tf) }}" alt="" width="100px">
+                                <img src="{{ asset('storage/'. $item->bukti_tf) }}" alt="" width="100px" height="80px">
                             </td>
                             <td></td>
                             <td>

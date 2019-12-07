@@ -27,7 +27,7 @@
                                         </a>
                                     </li>
                             <li>
-                                <a href="{{ url('admin/penyewa')}}" class="nav-link">
+                                <a href="{{ url('/datapenyewa')}}" class="nav-link">
                                     <i class="fa fa-edit"></i>
                                     <span>Data Penyewaan</span>
                                 </a>
