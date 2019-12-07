@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Building;
 use App\Role;
 use App\User;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -287,5 +288,16 @@ class GedungController extends Controller
         // ->join('buildings', 'buildings.id_owner','=','users.id')
         // ->get();
         // dd($pemilik);
+    }
+
+    public function penyewa()
+    {
+        //
+        $penyewa = Payment::all()
+        ->get();
+        // return view('admin.penyewa', compact('penyewa'));
+        // ->join('buildings', 'buildings.id_owner','=','users.id')
+        // ->get();
+        dd($penyewa);
     }
 }

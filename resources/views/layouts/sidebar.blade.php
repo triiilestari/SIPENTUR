@@ -20,32 +20,14 @@
                     <div class="menu_section">
                         <ul class="nav side-menu">
                             @if (Auth::user()->id_role == '1')
-                            {{-- <li><a><i class="fa fa-edit"></i> Gedung <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu"> --}}
                                     <li>
                                         <a href="{{ route('admin.indexbuilding')}}" class="nav-link">
                                             <i class="fa fa-table"></i>
                                             <span>Data Gedung</span>
                                         </a>
                                     </li>
-                                    {{-- <li>
-                                        <a href="{{ route('admin.buildingverification')}}" class="nav-link">
-                                            <i class="fa fa-table"></i>
-                                            <span>Verifikasi Gedung</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.editverification')}}" class="nav-link">
-                                            <i class="fa fa-table"></i>
-                                            <span>Pengajuan Edit Gedung</span>
-                                        </a>
-                                    </li> --}}
-                                {{-- </ul>
-                            </li> --}}
-
-
                             <li>
-                                <a href="{{ route('admin.index')}}" class="nav-link">
+                                <a href="{{ url('admin/penyewa')}}" class="nav-link">
                                     <i class="fa fa-edit"></i>
                                     <span>Data Penyewaan</span>
                                 </a>

@@ -31,7 +31,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $gedung->name_building }}</td>
                     <td>{{ $gedung->address_building }}</td>
-                    <td>{{ $gedung->cost }}</td>
+                    <td>Rp {{number_format($gedung->cost)  }}</td>
                 <td><a href="{{ url('admin/pemilik',$gedung->user->id)}}" >{{$gedung->user->name}}</td>
                     <td>
                         @if ( $gedung->submission==1 && $gedung->verif==0 && $gedung->edit==0)

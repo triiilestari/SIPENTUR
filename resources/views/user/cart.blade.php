@@ -73,7 +73,7 @@
                                 <table class="table table-condensed total-result">
                                     <tr>
                                         <td>Total</td>
-                                        {{-- <td><span>Rp {{ number_format(floatval($item->building->cost * ($selisih->days + 1)))}}</span></td> --}}
+                                        <td><span>Rp {{ number_format(floatval($item->cost * ($selisih->days + 1)))}}</span></td>
                                     </tr>
                                     <tr>
                                         
