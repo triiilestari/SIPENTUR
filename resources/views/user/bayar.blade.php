@@ -8,7 +8,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Bayar</li>
+                <li class="breadcrumb-item active" aria-current="page">Pesan dan Bayar</li>
             </ol>
         </nav>
         <div class="shopper-informations">

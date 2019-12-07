@@ -297,6 +297,9 @@ class GedungController extends Controller
         ->join('rentals', 'rentals.id','=','payments.id_rental')
         ->join('buildings', 'buildings.id','=','rentals.id_building')
         ->get();
+        // $rental = \App\Rental::all();
+        // $penyewa = \App\Payment::all();
+        // $data = DB::table('rentals')
         return view('admin/penyewa', compact('penyewa'));
         // dd($penyewa);
     }

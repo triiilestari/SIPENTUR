@@ -27,6 +27,9 @@
                     $datetime1 = new DateTime($item->day_over);
                     $datetime2 = new DateTime($item->day_start);
                     $selisih = $datetime1->diff($datetime2);
+                    // $namagedung = $data->name_building;
+                    // $hargagedung = $data->cost;
+                    // dd($namagedung, $hargagedung);
                     // dd($selisih->days)
                 @endphp
                 <tr>
@@ -60,7 +63,7 @@
                     <td>
                         @if ( $item->approvement=='proses')
                         <a href="" class="btn btn-info btn-xs" data-toggle="modal"
-                            data-target="#verif-{{ $item->id_rental}}">
+                            data-target="#verif-{{$item->id_rental}}">
                             <i class="fa fa-folder"></i> Verifikasi</a>
                         @endif
                         @if ( $item->approvement=='terverifikasi')
@@ -68,7 +71,7 @@
                             <i class="fa fa-folder"></i> Terverifikasi</a>
                         @endif
                     </td>
-                    <div class="modal fade" id="verif-{{$item->id}}" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="verif-{{$item->id_rental}}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -78,7 +81,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                <form action="{{ url('admin/verifbayar',$item->id) }}" method="post">
+                                <form action="{{ url('admin/verifbayar',$item->id_rental) }}" method="post">
                                         <div class="modal-body">
                                             @csrf
                                             @method('PATCH')
@@ -112,6 +115,9 @@
                                             <div class="form-group">
                                                 <img src="{{ asset('storage/'. $item->bukti_tf) }}" style="width: 200px; height: 200px;"srcset="">
                                             </div>
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="{{$item->id_rental}}">
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -124,8 +130,6 @@
                         </div>
                 </tr>
                 @endforeach
-
-                
             </tbody>
         </table>
     </div>

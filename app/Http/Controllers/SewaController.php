@@ -141,13 +141,15 @@ class SewaController extends Controller
         return view('user/checkout', compact('checkout'));
     }
 
-    public function verifbayar(Payment $penyewa)
+    public function verifbayar(Request $request, $id)
     {
-        $penyewa->update([
-            'aprrovement' => 'Terverifikasi'
-        ]);
 
-        return redirect()->back();
+        $penyewa = DB::table('payments')
+                ->where('id_rental', $id )
+                ->update([
+                    'approvement' => 'Terverifikasi'
+                    ]);
+        // return redirect()->back();
 
     }
 }
