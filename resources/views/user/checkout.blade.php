@@ -62,7 +62,7 @@
                                 <button type="button" class="btn btn-default get">Proses</button>
                                 @endif
                                 @if($item->approvement=='verifikasi')
-                                <button type="button" class="btn btn-default get">Terverifikasi</button>
+                                <a href="/cetakpdf/{{$item->id_rental}}" class="btn btn-default get">Terverifikasi</a>
                                 @endif
                             </td>
                         </tr>

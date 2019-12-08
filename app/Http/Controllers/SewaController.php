@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Payment;
+use PDF;
 
 class SewaController extends Controller
 {
@@ -151,5 +152,19 @@ class SewaController extends Controller
                     ]);
         return redirect()->back();
 
+    }
+
+    public function cetak($id)
+    {
+        //
+        $checkout = DB::table('payments')
+                    ->join('rentals', 'rentals.id','=','payments.id_rental')
+                    ->join('buildings', 'buildings.id','=','rentals.id_building')
+                    ->join('users', 'rentals.id_loaner','=','users.id')
+                    ->where('id_rental', $id )
+                    ->get();
+        $pdf = PDF:: loadView ('masyarakat.pdf', compact('checkout'));
+        return $pdf->stream();
+        // dd($checkout);
     }
 }

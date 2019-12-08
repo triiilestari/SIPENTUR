@@ -57,6 +57,8 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::post('bayar', 'SewaController@post_bayar');
         Route::get('checkout', 'SewaController@indexcheckout');
         Route::get('/sewa', 'PenyewaController@sewa');
+        Route::get('/cetakpdf/{rental}', 'SewaController@cetak');
+
     });
     
     
