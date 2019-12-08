@@ -163,8 +163,9 @@ class SewaController extends Controller
                     ->join('users', 'rentals.id_loaner','=','users.id')
                     ->where('id_rental', $id )
                     ->get();
-        $pdf = PDF:: loadView ('masyarakat.pdf', compact('checkout'));
-        return $pdf->stream();
-        // dd($checkout);
+
+        $pdf = PDF::loadview('masyarakat/pdf', compact('checkout'));
+        return $pdf->download('bukti-penyewaan-pdf');
+        // dd($pdf);
     }
 }
