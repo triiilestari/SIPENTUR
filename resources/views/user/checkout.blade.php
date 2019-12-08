@@ -62,7 +62,8 @@
                                 <button type="button" class="btn btn-default get">Proses</button>
                                 @endif
                                 @if($item->approvement=='verifikasi')
-                                <a href="/cetakpdf/{{$item->id_rental}}" class="btn btn-default get">Terverifikasi</a>
+                                <p class="btn btn-default">Terverifikasi</p><br>
+                                <a href="/cetakpdf/{{$item->id_rental}}" class="btn btn-default get"> Catak  Bukti </a>
                                 @endif
                             </td>
                         </tr>
@@ -87,11 +88,6 @@
                                         <td>{{$selisih->days + 1}} hari</td>
                                     </tr>
                                     <tr>
-                                        {{-- <td>
-                                            <a href="{{'/bayar/'. $item->id}}">
-                                                <button class="btn btn-primary">Pesan dan bayar</button>
-                                            </a>
-                                        </td> --}}
                                     </tr>
                                     
                                 </table>
