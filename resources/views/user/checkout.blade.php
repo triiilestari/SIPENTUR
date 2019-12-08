@@ -61,6 +61,9 @@
                                 @if($item->approvement=='proses')
                                 <button type="button" class="btn btn-default get">Proses</button>
                                 @endif
+                                @if($item->approvement=='verifikasi')
+                                <button type="button" class="btn btn-default get">Terverifikasi</button>
+                                @endif
                             </td>
                         </tr>
                     </article>
@@ -76,7 +79,7 @@
                                 <table class="table table-condensed total-result">
                                     <tr>
                                         <td>Total</td>
-                                        <td><span>Rp {{ number_format(floatval($item->cost * ($selisih->days + 1)))}}</span></td>
+                                        <td><span>Rp {{ number_format(floatval($item->salary))}}</span></td>
                                     </tr>
                                     <tr>
                                         

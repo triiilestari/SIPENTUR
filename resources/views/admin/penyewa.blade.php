@@ -56,7 +56,7 @@
                         @if($item->approvement=='proses')
                         Menunggu Verifikasi
                         @endif
-                        @if($item->approvement=='terverifikasi')
+                        @if($item->approvement=='verifikasi')
                         Terverifikasi
                         @endif
                     </td>
@@ -66,7 +66,7 @@
                             data-target="#verif-{{$item->id_rental}}">
                             <i class="fa fa-folder"></i> Verifikasi</a>
                         @endif
-                        @if ( $item->approvement=='terverifikasi')
+                        @if ( $item->approvement=='verifikasi')
                         <a href="" class="btn btn-success btn-xs">
                             <i class="fa fa-folder"></i> Terverifikasi</a>
                         @endif

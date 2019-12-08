@@ -147,9 +147,9 @@ class SewaController extends Controller
         $penyewa = DB::table('payments')
                 ->where('id_rental', $id )
                 ->update([
-                    'approvement' => 'Terverifikasi'
+                    'approvement' => 'verifikasi'
                     ]);
-        // return redirect()->back();
+        return redirect()->back();
 
     }
 }
