@@ -34,7 +34,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::post('/buildings/create', 'GedungController@store')->name('owner.creategedung');
         Route::get('/buildings/{gedung}', 'GedungController@edit')->name('owner.proposeedit');
         Route::patch('/buildings/update/{gedung}', 'GedungController@update')->name('owner.editgedung');
-        
+        Route::get('editprofile', 'OwnerController@edit');
         
     });
     
@@ -70,6 +70,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::get('/admin/pemilik/{user}', 'GedungController@pemilik')->name('pemilik.gedung');
         Route::get('/datapenyewa', 'GedungController@penyewa');
         Route::patch('admin/verifbayar/{payment}', 'SewaController@verifbayar');
+        
         // Route::get('admin.showgedung/{gedung}', 'GedungController@show');
     });
     

@@ -20,46 +20,46 @@
         </div>
         <div class="x_content">
 
-          <form class="form-horizontal form-label-left" action="" method=""
+          <form class="form-horizontal form-label-left" action="{{ route('owner.update',Auth::user()) }}" method="post"
             novalidate>
             {{-- <span class="section">Personal Info</span> --}}
-            {{-- @csrf
-            @method('PATCH') --}}
+            @csrf
+            @method('PATCH')
             <br>
             <br>
             <br>
             <div class="item form-group">
               <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name </label>
               <div class="col-md-6 col-sm-6">
-                <input disabled id="name" class="form-control" name="name" placeholder="" required="required" type="text"
+                <input id="name" class="form-control" name="name" placeholder="" required="required" type="text"
                   value="{{ Auth::user()->name }}">
               </div>
             </div>
             <div class="item form-group">
               <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email </label>
               <div class="col-md-6 col-sm-6">
-                <input disabled  type="email" id="email" name="email" required="required" class="form-control"
+                <input type="email" id="email" name="email" required="required" class="form-control"
                   value="{{ Auth::user()->email }}">
               </div>
             </div>
             <div class="item form-group">
               <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Nama Company </label>
               <div class="col-md-6 col-sm-6">
-                <input disabled  type="text" id="company_name" name="company_name" required="required"
+                <input type="text" id="company_name" name="company_name" required="required"
                   value="{{ Auth::user()->company_name }}" class="form-control">
               </div>
             </div>
             <div class="item form-group">
               <label class="col-form-label col-md-3 col-sm-3 label-align" for="number">Alamat </label>
               <div class="col-md-6 col-sm-6">
-                <input disabled type="text" id="user_address" name="user_address" required="required"
+                <input type="text" id="user_address" name="user_address" required="required"
                   value="{{ Auth::user()->user_address }}" class="form-control">
               </div>
             </div>
             <div class="item form-group">
               <label class="col-form-label col-md-3 col-sm-3 label-align" for="website">Nomer Telephone </label>
               <div class="col-md-6 col-sm-6">
-                <input disabled  type="tel" id="phone" name="phone" required="required" class="form-control"
+                <input type="tel" id="phone" name="phone" required="required" class="form-control"
                   value="{{ Auth::user()->phone }}">
               </div>
             </div>
@@ -67,10 +67,10 @@
             <div class="ln_solid"></div>
             <div class="form-group">
               <div class="col-md-6 offset-md-3">
-                <br>
-                <br>
-                <a href="editprofile" class="btn btn-primary">Edit</a>
-                <a href="/home" class="btn btn-success">Back</a>
+                    <br>
+                    <br>
+                <a href="{{ route('owner.profile')}}" class="btn btn-success">Kembali</a>
+                <button id="send" type="submit" class="btn btn-primary">Simpan</button>
               </div>
             </div>
           </form>
