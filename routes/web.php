@@ -35,6 +35,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::get('/buildings/{gedung}', 'GedungController@edit')->name('owner.proposeedit');
         Route::patch('/buildings/update/{gedung}', 'GedungController@update')->name('owner.editgedung');
         Route::get('editprofile', 'OwnerController@edit');
+        Route::get('/penyewa', 'GedungController@penyewa');
         
     });
     

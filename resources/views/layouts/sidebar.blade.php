@@ -48,7 +48,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('owner.penyewaan')}}" class="nav-link">
+                                <a href="{{ url('/penyewa')}}" class="nav-link">
                                     <i class="fa fa-edit"></i>
                                     <span>Data Penyewaan</span>
                                 </a>

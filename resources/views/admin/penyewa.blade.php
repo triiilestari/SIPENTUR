@@ -4,6 +4,8 @@
 
 @section('container')
 <div style="text-align: center; font-family: Bookman Old Style; font-size:30px">DATA PENYEWA GEDUNG</div>
+<br>
+<br>
 <div class="x_panel">
     <div class="x_content">
         <table id="datatable" class="table table-striped jambo_table bulk-action">

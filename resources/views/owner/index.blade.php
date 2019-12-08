@@ -69,8 +69,8 @@
               <div class="col-md-6 offset-md-3">
                 <br>
                 <br>
-                <a href="editprofile" class="btn btn-primary">Edit</a>
-                <a href="/home" class="btn btn-success">Back</a>
+                <a href="/home" class="btn btn-success">Kembali</a>
+                <a href="editprofile" class="btn btn-primary">Ubah</a>
               </div>
             </div>
           </form>

@@ -293,14 +293,18 @@ class GedungController extends Controller
     public function penyewa()
     {
         //
+        // $rental = \App\Rental::all();
+        // $penyewa = \App\Payment::all();
+        // $data = DB::table('rentals')
+        // dd($penyewa);
         $penyewa = DB::table('payments')
         ->join('rentals', 'rentals.id','=','payments.id_rental')
         ->join('buildings', 'buildings.id','=','rentals.id_building')
         ->get();
-        // $rental = \App\Rental::all();
-        // $penyewa = \App\Payment::all();
-        // $data = DB::table('rentals')
+        if (Auth::user()->id_role == 1) {
         return view('admin/penyewa', compact('penyewa'));
-        // dd($penyewa);
+        } else if (Auth::user()->id_role == 2) {
+            return view('owner/penyewa', compact('penyewa'));
+        }
     }
 }
