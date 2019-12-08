@@ -10,7 +10,7 @@
     <title>SIPENTUR | Bukti</title>
 
     <!-- Bootstrap -->
-    <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
@@ -37,7 +37,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('assets/eshopper/images/ico/apple-touch-icon-144-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('assets/eshopper/images/ico/apple-touch-icon-114-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('assets/eshopper/images/ico/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/eshopper/images/ico/apple-touch-icon-57-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/eshopper/images/ico/apple-touch-icon-57-precomposed.png') }}"> --}}
 </head>
 <body>
 	<header id="header"><!--header-->
@@ -189,12 +189,12 @@
         </div>
         
     </footer><!--/Footer-->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="{{ asset('user/js/jquery.js') }}"></script>
     <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('user/js/jquery.scrollUp.min.js') }}"></script>
     <script src="{{ asset('user/js/price-range.js') }}"></script>
     <script src="{{ asset('user/js/jquery.prettyPhoto.js') }}"></script>
-    <script src="{{ asset('user/js/main.js') }}"></script>
+    <script src="{{ asset('user/js/main.js') }}"></script> --}}
 </body>
 </html>

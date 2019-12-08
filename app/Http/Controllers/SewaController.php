@@ -165,7 +165,7 @@ class SewaController extends Controller
                     ->get();
 
         $pdf = PDF::loadview('masyarakat/pdf', compact('checkout'));
-        return $pdf->download('bukti-penyewaan-pdf');
-        // dd($pdf);
+        return $pdf->stream();
+        // dd($checkout);
     }
 }
