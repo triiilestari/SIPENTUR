@@ -43,7 +43,7 @@ class PenyewaController extends Controller
         //    ->get();
 
         $sewa = DB::table('rentals')
-        ->join('buildings', 'buildings.id','=','rentals.id_building')
+        ->join('buildings','rentals.id_building' ,'=','buildings.id')
         ->wherenotExists(function($query){
             $query->select(DB::raw(1))
                   ->from('payments')

@@ -31,6 +31,7 @@
                     <div class="col-sm-5">
                      <div class="shopper-info">
                         <p> Data Pemesanan</p>
+                        @foreach ($data as $data)
                             @php
                             $datetime1 = new DateTime($data->day_over);
                             $datetime2 = new DateTime($data->day_start);
@@ -64,6 +65,7 @@
                                 <a href="{{ url('/sewa') }}" class="btn btn-primary"> Batal </a>
                                 <button type="submit" class="btn btn-primary">Pesan</button>
                             </form>
+                            @endforeach
                     </div>
                     </div>
                     </div>

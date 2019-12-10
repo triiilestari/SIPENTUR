@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
     Route::get('/','PenyewaController@index');
     Route::get('gedung/{id}','PenyewaController@DetailGedung');
     // Route::get('/sewa', 'PenyewaController@sewa');
-    Route::get('/sewa/{id}/hapus', 'SewaController@destroy');
+    // Route::get('/sewa/{id}/hapus', 'SewaController@destroy');
 
 
     
@@ -58,6 +58,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::get('checkout', 'SewaController@indexcheckout');
         Route::get('/sewa', 'PenyewaController@sewa');
         Route::get('/cetakpdf/{rental}', 'SewaController@cetak');
+        Route::get('/sewa/{id}/hapus', 'SewaController@destroy');
 
     });
     

@@ -51,11 +51,20 @@ class SewaController extends Controller
             'id_loaner'=>$user,
         ]);
 
+        // $id = Auth::user()->id;
+        // $sewa = \App\Rental::all()->where('id_loaner','=',$id);
         $id = Auth::user()->id;
-        $sewa = \App\Rental::all()->where('id_loaner','=',$id);
+        $sewa = DB::table('rentals')
+        ->join('buildings', 'buildings.id','=','rentals.id_building')
+        ->wherenotExists(function($query){
+            $query->select(DB::raw(1))
+                  ->from('payments')
+                  ->whereRaw('payments.id_rental = rentals.id');
+        })
+        ->get();
+        return view('user.cart', compact(['sewa']));
 
-
-        return view('user.cart')->with('sewa', $sewa);
+        // return view('user.cart')->with('sewa', $sewa);
     }
 
     /**
@@ -100,16 +109,32 @@ class SewaController extends Controller
      */
     public function destroy($id)
     {
-        Rental::find($id)->delete();
+        Rental::where('id_building',$id)->delete();
         return redirect('/sewa')->with('status', 'Data Gedung Berhasil di hapus');
     }
 
     public function bayar($id)
     {
-        $data = Rental::findOrFail($id);
+        // $data = Rental::findOrFail($id);
         // dd($data);
 
+        // return view('user.bayar', compact('data'));
+
+
+        // $data = DB::table('rentals')
+        // $data = Rental::findOrFail($id)
+        $data = DB::table('rentals','id','=', $id)
+        ->join('buildings', 'buildings.id','=','rentals.id_building')
+        ->wherenotExists(function($query){
+            $query->select(DB::raw(1))
+            ->from('payments')
+            ->whereRaw('payments.id_rental = rentals.id');
+        })
+        // ->where('id', $id)
+        ->get()->where('id', $id);
+        // dd($data);
         return view('user.bayar', compact('data'));
+
     }
 
     public function post_bayar(Request $request)
