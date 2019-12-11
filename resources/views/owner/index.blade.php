@@ -70,7 +70,7 @@
                 <br>
                 <br>
                 <a href="/home" class="btn btn-success">Kembali</a>
-                <a href="editprofile" class="btn btn-primary">Ubah</a>
+                <a href="/editprofile" class="btn btn-primary">Ubah</a>
               </div>
             </div>
           </form>

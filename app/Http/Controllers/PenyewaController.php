@@ -32,7 +32,7 @@ class PenyewaController extends Controller
     public function sewa(){
         
         $id = Auth::user()->id;
-        // $sewa = \App\Rental::where('id_loaner',$id)
+        $sewa = \App\Rental::where('id_loaner',$id)
         // ->get();
         // $users = DB::table('users')
         //    ->whereExists(function ($query) {
@@ -42,8 +42,8 @@ class PenyewaController extends Controller
         //    })
         //    ->get();
 
-        $sewa = DB::table('rentals')
-        ->join('buildings','rentals.id_building' ,'=','buildings.id')
+        // $sewa = DB::table('rentals')
+        // ->join('buildings','rentals.id_building' ,'=','buildings.id')
         ->wherenotExists(function($query){
             $query->select(DB::raw(1))
                   ->from('payments')

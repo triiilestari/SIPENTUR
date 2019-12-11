@@ -32,16 +32,25 @@
                 </thead>
                 <tbody>
                     @foreach($sewa as $item)
+
+                    @php
+                        $gambar = \DB::table('buildings')->where('id', $item->id_building)->value('files');
+                        $namaGedung = \DB::table('buildings')->where('id', $item->id_building)->value('name_building');
+                        $cost = \DB::table('buildings')->where('id', $item->id_building)->value('cost');
+
+                        // dd($gambar);
+                    @endphp
+
                     <article data-postid="{{ $item->id }}">
                         <tr>
                             <td class="cart_product">
-                                <a href=""><img src="{{ asset('file/'. $item->files) }}" alt="" width="100px"></a>
+                                <a href=""><img src="{{ asset('file/'. $gambar) }}" alt="" width="100px"></a>
                             </td>
                             <td class="cart_description">
-                                <h4><a href="">{{ $item->name_building }}</a></h4>
+                                <h4><a href="">{{ $namaGedung }}</a></h4>
                             </td>
                             <td class="cart_price">
-                                <p>Rp {{ number_format(floatval($item->cost)) }}</p>
+                                <p>Rp {{ number_format(floatval($cost)) }}</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -73,7 +82,7 @@
                                 <table class="table table-condensed total-result">
                                     <tr>
                                         <td>Total</td>
-                                        <td><span>Rp {{ number_format(floatval($item->cost * ($selisih->days + 1)))}}</span></td>
+                                        <td><span>Rp {{ number_format(floatval($cost * ($selisih->days + 1)))}}</span></td>
                                     </tr>
                                     <tr>
                                         

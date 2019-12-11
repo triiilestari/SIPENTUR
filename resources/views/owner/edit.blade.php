@@ -31,14 +31,14 @@
             <div class="item form-group">
               <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name </label>
               <div class="col-md-6 col-sm-6">
-                <input id="name" class="form-control" name="name" placeholder="" required="required" type="text"
+                <input id="name" class="form-control" name="name" placeholder="" required type="text" pattern="[A-Z,a-z]+"
                   value="{{ Auth::user()->name }}">
               </div>
             </div>
             <div class="item form-group">
               <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email </label>
               <div class="col-md-6 col-sm-6">
-                <input type="email" id="email" name="email" required="required" class="form-control"
+                <input type="email" id="email" name="email" required class="form-control"
                   value="{{ Auth::user()->email }}">
               </div>
             </div>

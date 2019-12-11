@@ -87,7 +87,7 @@ class OwnerController extends Controller
             'phone'=>$request->phone,                
         ]);
 
-        return redirect()->back()->with('success','Berhasil Edit Profile');
+        return view('owner.index')->with('success','Berhasil Edit Profile');
     }
 
     /**

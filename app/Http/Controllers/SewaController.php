@@ -41,7 +41,6 @@ class SewaController extends Controller
      */
     public function store(Request $request)
     {
-        
 
         $user = Auth::user()->id;
         DB::table('rentals')->insert([
@@ -109,7 +108,7 @@ class SewaController extends Controller
      */
     public function destroy($id)
     {
-        Rental::where('id_building',$id)->delete();
+        Rental::where('id',$id)->delete();
         return redirect('/sewa')->with('status', 'Data Gedung Berhasil di hapus');
     }
 
@@ -123,15 +122,20 @@ class SewaController extends Controller
 
         // $data = DB::table('rentals')
         // $data = Rental::findOrFail($id)
-        $data = DB::table('rentals','id','=', $id)
-        ->join('buildings', 'buildings.id','=','rentals.id_building')
-        ->wherenotExists(function($query){
-            $query->select(DB::raw(1))
-            ->from('payments')
-            ->whereRaw('payments.id_rental = rentals.id');
-        })
-        // ->where('id', $id)
-        ->get()->where('id', $id);
+
+        $data = \DB::table('rentals')->where('id', $id)->get()->all();
+
+        // dd($data);
+        
+        // $data = DB::table('rentals','id','=', $id)
+        // ->join('buildings', 'buildings.id','=','rentals.id_building')
+        // ->wherenotExists(function($query){
+        //     $query->select(DB::raw(1))
+        //     ->from('payments')
+        //     ->whereRaw('payments.id_rental = rentals.id');
+        // })
+        // // ->where('id', $id)
+        // ->get()->where('id', $id);
         // dd($data);
         return view('user.bayar', compact('data'));
 
@@ -153,7 +157,7 @@ class SewaController extends Controller
         $data->approvement = 'proses';
         $data->save();
         
-        return redirect('/');
+        return redirect('/checkout');
     }
 
     public function indexcheckout()
@@ -163,6 +167,8 @@ class SewaController extends Controller
         ->join('rentals', 'rentals.id','=','payments.id_rental')
         ->join('buildings', 'buildings.id','=','rentals.id_building')
         ->get();
+
+        // dd($checkout);
 
         return view('user/checkout', compact('checkout'));
     }
