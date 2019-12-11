@@ -84,4 +84,27 @@ class UserController extends Controller
     {
         //
     }
+    public function userStore(Request $request)
+    {
+        // dd($request->all());
+        \Validator::make($request->all(),[
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6'],
+            'confirmpassword' => ['required', 'same:password'],
+            'phone' => ['required', 'digits_between:11,14'],
+            'user_address' => ['required'],
+        ])->validate();
+        
+        $new = new \App\User;
+        $new->name = $request->get('name');
+        $new->user_address = $request->get('user_address');
+        $new->email = $request->get('email');
+        $new->phone = $request->get('phone');
+        $new->id_role = 3;
+        $new->password = bcrypt($request->get('password'));
+        $new->save();
+        return redirect('/');
+        
+    }
 }

@@ -111,17 +111,17 @@ class GedungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Gedung $gedung)
-    {
-        //
-        if (Auth::user()->hasAnyRole('owner')) {
-            return view('owner.showgedung', ['gedung' => $gedung]);
-        } else if (Auth::user()->hasAnyRole('admin')) {
-            return view('admin.showgedung', ['gedung' => $gedung]);
-        } else if (Auth::user()->hasAnyRole('masyarakat')) {
-            return view('masyarakat.showgedung', ['gedung' => $gedung]);
-        }
-    }
+    // public function show(Gedung $gedung)
+    // {
+    //     //
+    //     if (Auth::user()->hasAnyRole('owner')) {
+    //         return view('owner.showgedung', ['gedung' => $gedung]);
+    //     } else if (Auth::user()->hasAnyRole('admin')) {
+    //         return view('admin.showgedung', ['gedung' => $gedung]);
+    //     } else if (Auth::user()->hasAnyRole('masyarakat')) {
+    //         return view('masyarakat.showgedung', ['gedung' => $gedung]);
+    //     }
+    // }
 
     /**
      * Show the form for editing the specified resource.
