@@ -297,10 +297,8 @@ class GedungController extends Controller
         // $penyewa = \App\Payment::all();
         // $data = DB::table('rentals')
         // dd($penyewa);
-        $penyewa = DB::table('payments')
-        ->join('rentals', 'rentals.id','=','payments.id_rental')
-        ->join('buildings', 'buildings.id','=','rentals.id_building')
-        ->get();
+        $penyewa = DB::table('payments')->get()->all();
+        // dd($penyewa);
         if (Auth::user()->id_role == 1) {
         return view('admin/penyewa', compact('penyewa'));
         } else if (Auth::user()->id_role == 2) {

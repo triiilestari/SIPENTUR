@@ -29,16 +29,19 @@
                     $datetime1 = new DateTime($item->day_over);
                     $datetime2 = new DateTime($item->day_start);
                     $selisih = $datetime1->diff($datetime2);
-                    // $namagedung = $data->name_building;
+                    $namagedung = \DB::table('buildings')->where('id', $item->id_building)->value('name_building');
+                    $address_building = \DB::table('buildings')->where('id', $item->id_building)->value('address_building');
+                    $cost = \DB::table('buildings')->where('id', $item->id_building)->value('cost');
+                    // dd($cost);
                     // $hargagedung = $data->cost;
                     // dd($namagedung, $hargagedung);
                     // dd($selisih->days)
                 @endphp
                 <tr>
                 <td scope="row">{{$loop->iteration}}</td>
-                    <td>{{$item->name_building}}</td>
-                    <td>{{$item->address_building}}</td>
-                    <td>Rp {{number_format($item->cost)}}</td>
+                    <td>{{$namagedung}}</td>
+                    <td>{{$address_building}}</td>
+                    <td>Rp {{number_format($cost)}}</td>
                     <td>
                         <p>Mulai</p>
                         <span><b id="start_date">{{ date('d M Y', strtotime($item->day_start)) }}</b></span>
@@ -65,7 +68,7 @@
                     <td>
                         @if ( $item->approvement=='proses')
                         <a href="" class="btn btn-info btn-xs" data-toggle="modal"
-                            data-target="#verif-{{$item->id_rental}}">
+                            data-target="#verif-{{$item->id}}">
                             <i class="fa fa-folder"></i> Verifikasi</a>
                         @endif
                         @if ( $item->approvement=='verifikasi')
@@ -73,7 +76,7 @@
                             <i class="fa fa-folder"></i> Terverifikasi</a>
                         @endif
                     </td>
-                    <div class="modal fade" id="verif-{{$item->id_rental}}" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="verif-{{$item->id}}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -83,21 +86,21 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                <form action="{{ url('admin/verifbayar',$item->id_rental) }}" method="post">
+                                <form action="{{ url('admin/verifbayar',$item->id) }}" method="post">
                                         <div class="modal-body">
                                             @csrf
                                             @method('PATCH')
                                             <div class="form-group">
                                                 <label for="">Nama Gedung</label>
-                                                <p>{{ $item->name_building }}</p>
+                                                <p>{{ $namagedung }}</p>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Alamat Gedung</label>
-                                                <p>{{ $item->address_building }}</p>
+                                                <p>{{ $address_building }}</p>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Harga Gedung</label>
-                                                <p>Rp {{number_format($item->cost)}}</h3>
+                                                <p>Rp {{number_format($cost)}}</h3>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Pelaksanaan</label>
@@ -118,7 +121,7 @@
                                                 <img src="{{ asset('storage/'. $item->bukti_tf) }}" style="width: 200px; height: 200px;"srcset="">
                                             </div>
                                             <div class="form-group">
-                                                <input type="hidden" name="id" value="{{$item->id_rental}}">
+                                                <input type="hidden" name="id" value="{{$item->id}}">
                                             </div>
                                         </div>
                                         <div class="modal-footer">

@@ -31,15 +31,23 @@
                 </thead>
                 <tbody>
                     @foreach($checkout as $item)
+
+                    @php
+                        $gambar = \DB::table('buildings')->where('id', $item->id_building)->value('files');
+                        $name_building = \DB::table('buildings')->where('id', $item->id_building)->value('name_building');
+                        $cost = \DB::table('buildings')->where('id', $item->id_building)->value('cost');
+                        // dd($bukti_tf);
+                    @endphp
+
                     <article data-postid="{{ $item->id }}">
                         <tr>
                             <td class="cart_product">
-                                <a href=""><img src="{{ asset('file/'. $item->files) }}" alt="" width="100px"></a>
+                                <a href=""><img src="{{ asset('file/'. $gambar) }}" alt="" width="100px"></a>
                                 <br>
-                                <h4><span>{{ $item->name_building }}</span></h4>
+                                <h4><span>{{ $name_building }}</span></h4>
                             </td>
                             <td class="cart_price">
-                                <p>Rp {{ number_format(floatval($item->cost)) }}</p>
+                                <p>Rp {{ number_format(floatval($cost)) }}</p>
                             </td>
                             <td>
                                 <p>Mulai</p>
@@ -51,7 +59,7 @@
 
                             </td>
                             <td>
-                                <p>{{ date('d M Y', strtotime($item->day_payment)) }}</p>
+                                <p>{{ date('d M Y', strtotime($item->created_at)) }}</p>
                             </td>
                             <td>
                                 <img src="{{ asset('storage/'. $item->bukti_tf) }}" alt="" width="100px" height="80px">
@@ -63,7 +71,7 @@
                                 @endif
                                 @if($item->approvement=='verifikasi')
                                 <p class="btn btn-default">Terverifikasi</p><br>
-                                <a href="/cetakpdf/{{$item->id_rental}}" class="btn btn-default get"> Catak  Bukti </a>
+                                <a href="/cetakpdf/{{$item->id}}" class="btn btn-default get"> Catak  Bukti </a>
                                 @endif
                             </td>
                         </tr>

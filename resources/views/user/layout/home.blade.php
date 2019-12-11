@@ -122,13 +122,13 @@
                                 @guest
                                 <li><a href="{{ url('/checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="{{ url('/sewa') }}"><i class="fa fa-shopping-cart"></i> Sewa</a></li>
-                                <li><a href="{{ url('/') }}"><i class="fa fa-star"></i> Cari Barang</a></li> 
+                                <li><a href="{{ url('/') }}"><i class="fa fa-star"></i> Cari Gedung</a></li> 
 
                                 @else
                                 @if (Auth::user()->id_role == 3)
                                 <li><a href="{{ url('/checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="{{ url('/sewa') }}"><i class="fa fa-shopping-cart"></i> Sewa</a></li>
-                                <li><a href="{{ url('/') }}"><i class="fa fa-star"></i> Cari Barang</a></li> 
+                                <li><a href="{{ url('/') }}"><i class="fa fa-star"></i> Cari Gedung</a></li> 
                                 @endif
                                 @if (Auth::user()->id_role == 2)
                                 <li><a href="{{ url('/home') }}"><i class="fa fa-user"></i> Manage</a></li>
@@ -141,16 +141,13 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div><!--/header-bottom-->
     </header><!--/header-->
     
+
+    @include('user.layout.alert')
     
     @yield('content')
     

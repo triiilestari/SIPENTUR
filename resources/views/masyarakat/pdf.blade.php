@@ -18,6 +18,13 @@
     $datetime1 = new DateTime($item->day_over);
     $datetime2 = new DateTime($item->day_start);
     $selisih = $datetime1->diff($datetime2);
+    $user = \DB::table('users')->where('id', $item->id_loaner)->value('name');
+    $user_address = \DB::table('users')->where('id', $item->id_loaner)->value('user_address');
+    $email = \DB::table('users')->where('id', $item->id_loaner)->value('email');
+    $phone = \DB::table('users')->where('id', $item->id_loaner)->value('phone');
+    $name_building = \DB::table('buildings')->where('id', $item->id_building)->value('name_building');
+    $address_building = \DB::table('buildings')->where('id', $item->id_building)->value('address_building');
+    $cost = \DB::table('buildings')->where('id', $item->id_building)->value('cost');
     // dd($selisih->days)
     @endphp
     <center>
@@ -34,7 +41,7 @@
             <td> </td>
             <td>:</td>
             <td></td>
-            <td><input disabled type="text" value="{{$item->name}}"></td>
+            <td><input disabled type="text" value="{{$user}}"></td>
         </tr>
         <tr>
                 <td> </td>
@@ -45,7 +52,7 @@
             <td> </td>
             <td>:</td>
             <td></td>
-            <td><input disabled type="text" value="{{$item->user_address}}"></td>
+            <td><input disabled type="text" value="{{$user_address}}"></td>
         </tr>
         <tr>
                 <td> </td>
@@ -56,7 +63,7 @@
             <td> </td>
             <td>:</td>
             <td></td>
-            <td><input disabled type="text" value="{{$item->email}}"></td>
+            <td><input disabled type="text" value="{{$email}}"></td>
         </tr>
         <tr>
                 <td> </td>
@@ -67,7 +74,7 @@
             <td> </td>
             <td>:</td>
             <td></td>
-            <td><input disabled type="text" value="{{$item->phone}}"></td>
+            <td><input disabled type="text" value="{{$phone}}"></td>
         </tr>
     <tr>
         <td> </td>
@@ -78,7 +85,7 @@
         <td> </td>
         <td>:</td>
         <td></td>
-        <td><input disabled type="text" value="{{$item->name_building}}"></td>
+        <td><input disabled type="text" value="{{$name_building}}"></td>
     </tr>
     <tr>
             <td> </td>
@@ -89,7 +96,7 @@
         <td> </td>
         <td>:</td>
         <td></td>
-        <td><input disabled type="text" value="{{$item->address_building}}"></td>
+        <td><input disabled type="text" value="{{$address_building}}"></td>
     </tr>
     <tr>
             <td> </td>
@@ -100,7 +107,7 @@
         <td> </td>
         <td>:</td>
         <td></td>
-        <td><input disabled type="text" value="Rp {{ number_format($item->cost)}}"></td>
+        <td><input disabled type="text" value="Rp {{ number_format($cost)}}"></td>
     </tr>
     <tr>
         <td> </td>
@@ -155,7 +162,7 @@
         <td> </td>
         <td>:</td>
         <td></td>
-        <td><input disabled type="text" value="{{date('d M Y', strtotime($item->day_payment))}}"></td>
+        <td><input disabled type="text" value="{{date('d M Y', strtotime($item->created_at))}}"></td>
     </tr>
 </table>
 </div>

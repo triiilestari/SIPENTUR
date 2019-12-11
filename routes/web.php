@@ -56,7 +56,8 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
         Route::get('bayar/{id}', 'SewaController@bayar');
         Route::post('bayar', 'SewaController@post_bayar');
         Route::get('checkout', 'SewaController@indexcheckout');
-        Route::get('/sewa', 'PenyewaController@sewa');
+        Route::get('/sewa', 'PenyewaController@sewa')->name('sewa');
+        Route::get('rentals', 'SewaController@rentals')->name('rentals');
         Route::get('/cetakpdf/{rental}', 'SewaController@cetak');
         Route::get('/sewa/{id}/hapus', 'SewaController@destroy');
 

@@ -49,8 +49,8 @@ class Rental extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function payments()
-    {
-        return $this->hasMany('App\Payment', 'id_rental');
-    }
+    // public function payments()
+    // {
+    //     return $this->hasMany('App\Payment', 'id_rental');
+    // }
 }

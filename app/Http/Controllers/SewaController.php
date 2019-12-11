@@ -41,29 +41,44 @@ class SewaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
 
-        $user = Auth::user()->id;
-        DB::table('rentals')->insert([
-            'id_building'=>$request->id,
-            'day_start'=>$request->day_start,
-            'day_over'=>$request->day_over,
-            'id_loaner'=>$user,
-        ]);
+        if ($request->day_start <= $request->day_over) {
+            
+            $user = Auth::user()->id;
+            DB::table('rentals')->insert([
+                'id_building'=>$request->id,
+                'day_start'=>$request->day_start,
+                'day_over'=>$request->day_over,
+                'id_loaner'=>$user,
+            ]);
+            return redirect('rentals')->with('success', 'Data berhasil dipesan');
+        }elseif ($request->day_start > $request->day_over){
+            return back()->with('fail' , 'Tanggal mulai tidak valid');
+        }
 
         // $id = Auth::user()->id;
         // $sewa = \App\Rental::all()->where('id_loaner','=',$id);
-        $id = Auth::user()->id;
-        $sewa = DB::table('rentals')
-        ->join('buildings', 'buildings.id','=','rentals.id_building')
-        ->wherenotExists(function($query){
-            $query->select(DB::raw(1))
-                  ->from('payments')
-                  ->whereRaw('payments.id_rental = rentals.id');
-        })
-        ->get();
-        return view('user.cart', compact(['sewa']));
+        // $id = Auth::user()->id;
+        // $sewa = DB::table('rentals')
+        // ->join('buildings', 'buildings.id','=','rentals.id_building')
+        // ->wherenotExists(function($query){
+        //     $query->select(DB::raw(1))
+        //           ->from('payments')
+        //           ->whereRaw('payments.id_rental = rentals.id');
+        // })
+        // ->get();
+       
 
         // return view('user.cart')->with('sewa', $sewa);
+    }
+
+    public function rentals()
+    {
+        $sewa = Rental::where('id_loaner', Auth::user()->id)->get()->all();
+        // dd(Auth::user()->id);
+
+        return view('user.cart', compact('sewa'));
     }
 
     /**
@@ -143,10 +158,12 @@ class SewaController extends Controller
 
     public function post_bayar(Request $request)
     {
-        // dd($request->all());
+        $rental = Rental::findOrFail($request->id);
+        // dd($rental);
+
+
         $data = new \App\Payment;
-        $data->id_rental = $request->id;
-        $data->day_payment = date('m-d-Y');
+        // $data->day_payment = date('m-d-Y');
         $data->salary = $request->bayar;
 
         $image = $request->file('bukti_tf');
@@ -155,7 +172,13 @@ class SewaController extends Controller
             $data->bukti_tf = $image_path;
         }
         $data->approvement = 'proses';
+        $data->id_building = $rental->id_building;
+        $data->id_loaner = $rental->id_loaner;
+        $data->day_start = $rental->day_start;
+        $data->day_over = $rental->day_over;
         $data->save();
+
+        Rental::where('id', $request->id)->delete();
         
         return redirect('/checkout');
     }
@@ -163,10 +186,7 @@ class SewaController extends Controller
     public function indexcheckout()
     {
         //
-        $checkout = DB::table('payments')
-        ->join('rentals', 'rentals.id','=','payments.id_rental')
-        ->join('buildings', 'buildings.id','=','rentals.id_building')
-        ->get();
+        $checkout = DB::table('payments')->get()->all();
 
         // dd($checkout);
 
@@ -177,7 +197,7 @@ class SewaController extends Controller
     {
 
         $penyewa = DB::table('payments')
-                ->where('id_rental', $id )
+                ->where('id', $id )
                 ->update([
                     'approvement' => 'verifikasi'
                     ]);
@@ -188,12 +208,7 @@ class SewaController extends Controller
     public function cetak($id)
     {
         //
-        $checkout = DB::table('payments')
-                    ->join('rentals', 'rentals.id','=','payments.id_rental')
-                    ->join('buildings', 'buildings.id','=','rentals.id_building')
-                    ->join('users', 'rentals.id_loaner','=','users.id')
-                    ->where('id_rental', $id )
-                    ->get();
+        $checkout = DB::table('payments')->get()->all();
 
         $pdf = PDF::loadview('masyarakat/pdf', compact('checkout'));
         return $pdf->stream();
