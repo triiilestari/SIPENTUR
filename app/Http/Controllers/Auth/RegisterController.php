@@ -66,6 +66,6 @@ class RegisterController extends Controller
      */
     protected function create(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
     }
 }
