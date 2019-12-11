@@ -31,6 +31,10 @@ class Payment extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function building()
+    {
+        return $this->belongsTo('App\Building', 'id_building');
+    }
     // public function rental()
     // {
     //     return $this->belongsTo('App\Rental', 'id_rental');
