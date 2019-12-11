@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SIPENTUR | Login</title>
+    <title>SIPENTUR | Registrasi</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -87,7 +87,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="login-form"><!--login form-->
-						<h2>Login to SIPENTUR</h2>
+						<h2>Registrasi to SIPENTUR</h2>
 						<form action="{{url('user/store')}}" method="post">
                                 @csrf
                                 <input type="text"  class="form-control-user @error('name') is-invalid @enderror" name="name" placeholder="Name"/>

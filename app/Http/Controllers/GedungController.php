@@ -273,12 +273,12 @@ class GedungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gedung $gedung)
-    {
-        //
-        Gedung::destroy($gedung->id);
-        return redirect('owner.indexgedung')->with('status', 'Data Gedung Berhasil di hapus');
-    }
+    // public function destroy(Gedung $gedung)
+    // {
+    //     //
+    //     Gedung::destroy($gedung->id);
+    //     return redirect('owner.indexgedung')->with('status', 'Data Gedung Berhasil di hapus');
+    // }
 
     public function pemilik($id)
     {
