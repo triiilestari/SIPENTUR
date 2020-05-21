@@ -71,7 +71,7 @@
                                 @endif
                                 @if($item->approvement=='verifikasi')
                                 <p class="btn btn-default">Terverifikasi</p><br>
-                                <a href="/cetakpdf/{{$item->id}}" class="btn btn-default get"> Catak  Bukti </a>
+                                <a href="/cetakpdf/{{$item->id}}" class="btn btn-default get"> Cetak  Bukti </a>
                                 @endif
                             </td>
                         </tr>

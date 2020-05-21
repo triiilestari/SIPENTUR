@@ -3,7 +3,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="{{ route('home') }}" class="site_title"><i class="fa fa-paw"></i> <span>SIPENTUR</span></a>
+                    <a href="{{ url('/') }}" class="site_title"><i class="fa fa-paw"></i> <span>SIPENTUR</span></a>
                 </div>
 
                 <div class="clearfix"></div>
